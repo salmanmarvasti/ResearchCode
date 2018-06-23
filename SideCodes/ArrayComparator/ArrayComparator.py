@@ -1,0 +1,9 @@
+import VARIABLES
+
+ARRAY_OF_INVALID_STOCKS = VARIABLES.ARRAY_OF_INVALID_STOCKS
+ARRAY_OF_STOCKS_USING = ['ADSK', 'WFC', 'NSC', 'WY', 'BLL', 'AFL', 'HES', 'SNDK', 'COL', 'STR', 'UST', 'ED', 'TER', 'DGX', 'FTI', 'FAST', 'MYL', 'SCHW', 'SBUX', 'BEAM', 'JCP', 'LO', 'AKAM', 'WFT', 'VAR', 'HPQ', 'PFE', 'XRAY', 'FLIR', 'DTV', 'TEX', 'FMCC', 'FITB', 'SHW', 'LUK', 'WHR', 'HUM', 'HON', 'MIL', 'DELL']
+
+
+for i in ARRAY_OF_STOCKS_USING:
+    if i in ARRAY_OF_INVALID_STOCKS:
+        print i
