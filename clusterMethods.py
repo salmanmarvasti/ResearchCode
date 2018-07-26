@@ -73,6 +73,8 @@ def clusterKMeans(data, n_digits, wholeDotOrientationGroup):
     dataX = reduced_data[:, 0]
     upX=[]
     downX=[]
+    upY = []
+    downY = []
 
     #finance
     upXFinance=[]
@@ -112,6 +114,7 @@ def clusterKMeans(data, n_digits, wholeDotOrientationGroup):
     for i in range(len(dataY)):
         if wholeDotOrientationGroup[i] == 'up':
             upX.append(dataX[i])
+            upY.append(dataY[i])
             if TestInfos.stockNameArray[i] in VARIABLES.Finance:
                 upXFinance.append(dataX[i])
                 upYFinance.append(dataY[i])
@@ -134,6 +137,7 @@ def clusterKMeans(data, n_digits, wholeDotOrientationGroup):
 
         elif wholeDotOrientationGroup[i] == 'down':
             downX.append(dataX[i])
+            downY.append(dataY[i])
             if TestInfos.stockNameArray[i] in VARIABLES.Finance:
                 downXFinance.append(dataX[i])
                 downYFinance.append(dataY[i])
@@ -162,31 +166,31 @@ def clusterKMeans(data, n_digits, wholeDotOrientationGroup):
                 steadyYOthers.append(dataY[i])
 
     # plt.plot(steadyXFinance, steadyYFinance, 'gs', label='Finance Line Steady')
-    plt.plot(upXFinance, upYFinance, 'g^', label='Finance Line Up')
-    plt.plot(downXFinance, downYFinance, 'go', label='Finance Line Down')
+    # plt.plot(upXFinance, upYFinance, 'g^', label='Finance Line Up')
+    # plt.plot(downXFinance, downYFinance, 'go', label='Finance Line Down')
     # plt.plot(steadyXHealthCare, steadyYHealthCare, 'rs', label='HealthCare Line Steady')
-    plt.plot(upXHealthCare, upYHealthCare, 'r^', label='HealthCare Line Up')
-    plt.plot(downXHealthCare, downYHealthCare, 'ro', label='HealthCare Line Down')
+    # plt.plot(upXHealthCare, upYHealthCare, 'r^', label='HealthCare Line Up')
+    # plt.plot(downXHealthCare, downYHealthCare, 'ro', label='HealthCare Line Down')
     # plt.plot(steadyXTechnology, steadyYTechnology, 'bs', label='Technology Line Steady')
-    plt.plot(upXTechnology, upYTechnology, 'b^', label='Technology Line Up')
-    plt.plot(downXTechnology, downYTechnology, 'bo', label='Technology Line Down')
+    plt.plot(upX, upY, 'b^', label='Line Up')
+    plt.plot(downX, downY, 'r*', label='Line Down')
     # plt.plot(steadyXOthers, steadyYOthers, 'ks', label='Others Line Steady')
-    plt.plot(upXOthers, upYOthers, 'k^', label='Others Line Up')
-    plt.plot(downXOthers, downYOthers, 'ko', label='Others Line Down')
+    # plt.plot(upXOthers, upYOthers, 'k^', label='Others Line Up')
+    # plt.plot(downXOthers, downYOthers, 'ko', label='Others Line Down')
     # Plot the centroids as a white X
     centroids = kmeans.cluster_centers_
     plt.scatter(centroids[:, 0], centroids[:, 1],
                 marker='x', s=169, linewidths=3,
                 color='darkseagreen', zorder=10, label='clustered points')
-    plt.title('K-means clustering on the digits dataset (PCA-reduced data)\n'
-              'Centroids are marked with white cross\n' +
+    plt.title('K-means clustering on PCA reduced data\n' +
               str(VARIABLES.START_YEAR) + '/' + str(VARIABLES.START_MONTH) + '/' + str(VARIABLES.START_DAY) +
               ' - ' +
               str(VARIABLES.FINISH_YEAR) + '/' + str(VARIABLES.FINISH_MONTH) + '/' + str(VARIABLES.FINISH_DAY))
     plt.legend()
     # plt.xlim(x_min, x_max)
     # plt.ylim(y_min+1 , y_max-1)
-    # plt.show()
+    if VARIABLES.SHOW_PLOT:
+        plt.show()
 
     firstCentroidMinDistance, firstCentroidMaxDistance = findMinMaxDistance(centroids[0], reduced_data)
     secondCentroidMinDistance, secondCentroidMaxDistance = findMinMaxDistance(centroids[1], reduced_data)
@@ -264,4 +268,5 @@ def gaussianModelClustering(wholeData, wholeDotOrientationGroup, names, lines):
     cid = fig.canvas.mpl_connect('button_press_event', lambda event: onclick(event, wholeData[:, 0], wholeData[:, 1], names, lines))
 
     plt.legend()
-    # plt.show()
+    if VARIABLES.SHOW_PLOT:
+        plt.show()

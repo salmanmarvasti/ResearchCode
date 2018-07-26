@@ -2,6 +2,9 @@ import matplotlib.pyplot as plt
 from matplotlib.finance import candlestick2_ochl
 import numpy as np
 
+from VARIABLES import SHOW_PLOT
+
+
 def showCandle(opens, closes, lows, highs):
     fig, ax = plt.subplots()
     # plt.ylim((-0.1, 1.1))
@@ -13,4 +16,5 @@ def showCandle(opens, closes, lows, highs):
     # print "the candles data are high: " + str(highs)
     # print "the candles data are low: " + str(lows)
 
-    # plt.show()
+    if SHOW_PLOT:
+        plt.show()

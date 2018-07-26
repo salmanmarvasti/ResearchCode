@@ -55,6 +55,7 @@ def normalizeDataDynamic(data, window, full_prices_1d):
     mdatas = []
     result = []
     lowest_highest_scale = []
+    RSIs = []
     for i in range(len(data)):
         mdata = data[i]
         windowNum = int(i/VARIABLES.NUMBER_OF_POINTS_CHOSEN_FOR_EACH_LINE)
@@ -77,6 +78,8 @@ def normalizeDataDynamic(data, window, full_prices_1d):
             highest = max(highs)
             scale = highest - lowest
             lowest_highest_scale.append([lowest, highest, scale])
+        if (i + 1) % VARIABLES.NUMBER_OF_POINTS_CHOSEN_FOR_EACH_LINE == 0:
+            RSIs.append(full_prices_1d.RSISMA[dataIndex])
     for i in range(len(mdatas)):
         mdata = mdatas[i]
         open = mdata[0]
@@ -86,14 +89,14 @@ def normalizeDataDynamic(data, window, full_prices_1d):
         # dynamic OHLC
         lowest = lowest_highest_scale[i][0]
         scale = lowest_highest_scale[i][2]
-        if scale == 0:
-            continue
+        # if scale == 0:
+        #     continue
         dyno = ((open - lowest) / scale) * VARIABLES.NORMALIZE_SCALE
         dync = ((close - lowest) / scale) * VARIABLES.NORMALIZE_SCALE
         dynl = ((low - lowest) / scale) * VARIABLES.NORMALIZE_SCALE
         dynh = ((high - lowest) / scale) * VARIABLES.NORMALIZE_SCALE
         result.append([dyno, dync, dynl, dynh])
-    return result
+    return result, RSIs
 
 
 def getAverage(full_price_1d):
@@ -146,7 +149,7 @@ def gentrends(window, full_prices_2d, full_prices_1d, name, times, normCandle, c
 
             if slope >= VARIABLES.STRAIGHT_LINE_TOLERANCE:
                 line.direction = "up"
-            elif slope < -1 * VARIABLES.STRAIGHT_LINE_TOLERANCE:
+            elif slope <= -1 * VARIABLES.STRAIGHT_LINE_TOLERANCE:
                 line.direction = "down"
             else:
                 line.direction = "steady"
@@ -173,13 +176,30 @@ def gentrends(window, full_prices_2d, full_prices_1d, name, times, normCandle, c
             dotOrientationGroup.append(lines[i].last_points_direction)
         dotOrientationGroup12D.append(lines[i].last_points_direction)
 
+    upCounted, downCounted, steadyCounted = False, False, False
+
     for line in lines:
         if line.last_points_direction == 'up':
-            plt.plot(line.getLastXPoints(), line.getLastYPoints(), 'bo')
+            if upCounted:
+                plt.plot(line.getLastXPoints(), line.getLastYPoints(), 'bo')
+            else:
+                plt.plot(line.getLastXPoints(), line.getLastYPoints(), 'bo', label='up')
+                upCounted = True
         elif line.last_points_direction == 'down':
-            plt.plot(line.getLastXPoints(), line.getLastYPoints(), 'ko')
+            if downCounted:
+                plt.plot(line.getLastXPoints(), line.getLastYPoints(), 'ko')
+            else:
+                downCounted = True
+                plt.plot(line.getLastXPoints(), line.getLastYPoints(), 'ko', label='down')
         elif line.last_points_direction == 'steady':
-            plt.plot(line.getLastXPoints(), line.getLastYPoints(), 'ro')
+            if steadyCounted:
+                plt.plot(line.getLastXPoints(), line.getLastYPoints(), 'ro')
+            else:
+                steadyCounted = True
+                plt.plot(line.getLastXPoints(), line.getLastYPoints(), 'ro', label='steady')
+    plt.legend()
+    # plt.xlim([1000, 1800])
+    # plt.ylim([40, 120])
 
     # print "the data are: "
 
@@ -206,7 +226,9 @@ def gentrends(window, full_prices_2d, full_prices_1d, name, times, normCandle, c
     # print str(len(data[0]))
 
     # normalizedData = np.array(normalizeDataStatic(data, window, full_prices_1d))
-    normalizedData = np.array(normalizeDataDynamic(data, window, full_prices_1d))
+    normalizedData, RSIs = normalizeDataDynamic(data, window, full_prices_1d)
+    normalizedData = np.array(normalizedData)
+    RSICounter = 0
     normalizedData12D = []
     counter = 0
     tempArr = []
@@ -224,4 +246,4 @@ def gentrends(window, full_prices_2d, full_prices_1d, name, times, normCandle, c
     else:
         candleInput = data
     # CandleStickChartTest.showCandle(candleInput[:, 0], candleInput[:, 1], candleInput[:, 2], candleInput[:, 3])
-    return normalizedData, dotOrientationGroup, normalizedData12D, dotOrientationGroup12D
+    return normalizedData, dotOrientationGroup, normalizedData12D, dotOrientationGroup12D, RSIs
