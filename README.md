@@ -8,8 +8,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>WY</td>
 		<td>BLL</td>
 		<td>AFL</td>
-	</tr>
-	<tr>
 		<td>HES</td>
 		<td>COL</td>
 		<td>UST</td>
@@ -24,8 +22,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>SCHW</td>
 		<td>SBUX</td>
 		<td>JCP</td>
-	</tr>
-	<tr>
 		<td>AKAM</td>
 		<td>WFT</td>
 		<td>VAR</td>
@@ -40,8 +36,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>SHW</td>
 		<td>WHR</td>
 		<td>HUM</td>
-	</tr>
-	<tr>
 		<td>HON</td>
 		<td>CSCO</td>
 		<td>MBI</td>
@@ -56,8 +50,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>LYB</td>
 		<td>EXPE</td>
 		<td>CTXS</td>
-	</tr>
-	<tr>
 		<td>FNMA</td>
 		<td>BBBY</td>
 		<td>WMT</td>
@@ -72,8 +64,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>GOOG</td>
 		<td>MAS</td>
 		<td>GD</td>
-	</tr>
-	<tr>
 		<td>CLX</td>
 		<td>ADBE</td>
 		<td>TYC</td>
@@ -88,8 +78,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>ROK</td>
 		<td>RTN</td>
 		<td>JWN</td>
-	</tr>
-	<tr>
 		<td>HBAN</td>
 		<td>KR</td>
 		<td>WYE</td>
@@ -104,8 +92,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>CF</td>
 		<td>POM</td>
 		<td>ITW</td>
-	</tr>
-	<tr>
 		<td>TGT</td>
 		<td>IRM</td>
 		<td>FII</td>
@@ -120,8 +106,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>C</td>
 		<td>FTR</td>
 		<td>LMT</td>
-	</tr>
-	<tr>
 		<td>EXC</td>
 		<td>EBAY</td>
 		<td>LIFE</td>
@@ -136,8 +120,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>EQR</td>
 		<td>KBH</td>
 		<td>DVN</td>
-	</tr>
-	<tr>
 		<td>XTO</td>
 		<td>CTAS</td>
 		<td>DHR</td>
@@ -152,8 +134,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>NRG</td>
 		<td>VFC</td>
 		<td>PXD</td>
-	</tr>
-	<tr>
 		<td>NYX</td>
 		<td>APOL</td>
 		<td>ZMH</td>
@@ -168,8 +148,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>PTV</td>
 		<td>HAL</td>
 		<td>CVX</td>
-	</tr>
-	<tr>
 		<td>LUV</td>
 		<td>LRCX</td>
 		<td>DISCA</td>
@@ -184,8 +162,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>FFIV</td>
 		<td>MCHP</td>
 		<td>MI</td>
-	</tr>
-	<tr>
 		<td>CB</td>
 		<td>EK</td>
 		<td>AGN</td>
@@ -200,8 +176,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>CMI</td>
 		<td>BDK</td>
 		<td>ASH</td>
-	</tr>
-	<tr>
 		<td>ODP</td>
 		<td>PKI</td>
 		<td>HST</td>
@@ -216,8 +190,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>DRI</td>
 		<td>LEN</td>
 		<td>DLTR</td>
-	</tr>
-	<tr>
 		<td>WU</td>
 		<td>ISRG</td>
 		<td>SDS</td>
@@ -232,8 +204,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>ALL</td>
 		<td>GGP</td>
 		<td>RAI</td>
-	</tr>
-	<tr>
 		<td>JAVA</td>
 		<td>SYMC</td>
 		<td>WPO</td>
@@ -248,8 +218,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>HSP</td>
 		<td>HPCCP</td>
 		<td>BSX</td>
-	</tr>
-	<tr>
 		<td>NDAQ</td>
 		<td>KLAC</td>
 		<td>CINF</td>
@@ -264,8 +232,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>MMC</td>
 		<td>PDCO</td>
 		<td>PLL</td>
-	</tr>
-	<tr>
 		<td>WB</td>
 		<td>DNB</td>
 		<td>HSY</td>
@@ -280,8 +246,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>PAYX</td>
 		<td>OKE</td>
 		<td>CLF</td>
-	</tr>
-	<tr>
 		<td>CMG</td>
 		<td>A</td>
 		<td>DD</td>
@@ -296,8 +260,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>EMN</td>
 		<td>VRSN</td>
 		<td>EIX</td>
-	</tr>
-	<tr>
 		<td>LEG</td>
 		<td>PWR</td>
 		<td>COG</td>
@@ -312,8 +274,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>NBL</td>
 		<td>LOW</td>
 		<td>ESV</td>
-	</tr>
-	<tr>
 		<td>Q</td>
 		<td>SO</td>
 		<td>TROW</td>
@@ -328,8 +288,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>PCAR</td>
 		<td>NWL</td>
 		<td>CNP</td>
-	</tr>
-	<tr>
 		<td>KSS</td>
 		<td>FMC</td>
 		<td>WEC</td>
@@ -344,8 +302,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>NYT</td>
 		<td>ETN</td>
 		<td>WMB</td>
-	</tr>
-	<tr>
 		<td>DDS</td>
 		<td>CERN</td>
 		<td>SNV</td>
@@ -360,8 +316,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>BBY</td>
 		<td>BLK</td>
 		<td>IFF</td>
-	</tr>
-	<tr>
 		<td>ROP</td>
 		<td>CVG</td>
 		<td>AON</td>
@@ -376,8 +330,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>TEL</td>
 		<td>SCG</td>
 		<td>CMCSA</td>
-	</tr>
-	<tr>
 		<td>F</td>
 		<td>MAR</td>
 		<td>BMC</td>
@@ -392,8 +344,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>LNC</td>
 		<td>WLP</td>
 		<td>NKE</td>
-	</tr>
-	<tr>
 		<td>CMA</td>
 		<td>PCS</td>
 		<td>TEG</td>
@@ -408,8 +358,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>CIEN</td>
 		<td>CCE</td>
 		<td>PPL</td>
-	</tr>
-	<tr>
 		<td>AVY</td>
 		<td>DDR</td>
 		<td>PEG</td>
@@ -424,8 +372,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>MSI</td>
 		<td>STX</td>
 		<td>VMC</td>
-	</tr>
-	<tr>
 		<td>SLB</td>
 		<td>CSX</td>
 		<td>THC</td>
@@ -440,8 +386,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>XYL</td>
 		<td>CCL</td>
 		<td>MMM</td>
-	</tr>
-	<tr>
 		<td>AMZN</td>
 		<td>JCI</td>
 		<td>MDT</td>
@@ -456,8 +400,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>NFLX</td>
 		<td>MTW</td>
 		<td>ADI</td>
-	</tr>
-	<tr>
 		<td>DV</td>
 		<td>MHP</td>
 		<td>CEG</td>
@@ -472,8 +414,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>PBI</td>
 		<td>AIG</td>
 		<td>AEE</td>
-	</tr>
-	<tr>
 		<td>DOW</td>
 		<td>OI</td>
 		<td>APA</td>
@@ -488,8 +428,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>PSX</td>
 		<td>DO</td>
 		<td>ECL</td>
-	</tr>
-	<tr>
 		<td>HOT</td>
 		<td>M</td>
 		<td>IYR</td>
@@ -504,8 +442,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>DVA</td>
 		<td>GME</td>
 		<td>YUM</td>
-	</tr>
-	<tr>
 		<td>APC</td>
 		<td>APD</td>
 		<td>GM</td>
@@ -520,8 +456,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>GLD</td>
 		<td>NFX</td>
 		<td>ADP</td>
-	</tr>
-	<tr>
 		<td>RF</td>
 		<td>BA</td>
 		<td>PM</td>
@@ -536,8 +470,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>AN</td>
 		<td>VIAB</td>
 		<td>AYE</td>
-	</tr>
-	<tr>
 		<td>MJN</td>
 		<td>MWV</td>
 		<td>NVDA</td>
@@ -552,8 +484,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>X</td>
 		<td>SPY</td>
 		<td>D</td>
-	</tr>
-	<tr>
 		<td>CFN</td>
 		<td>SGP</td>
 		<td>BJS</td>
@@ -568,8 +498,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>NE</td>
 		<td>AVB</td>
 		<td>HRS</td>
-	</tr>
-	<tr>
 		<td>FRX</td>
 		<td>EW</td>
 		<td>BMY</td>
@@ -584,8 +512,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>PCLN</td>
 		<td>MOS</td>
 		<td>PBCT</td>
-	</tr>
-	<tr>
 		<td>MRO</td>
 		<td>GAS</td>
 		<td>ANR</td>
@@ -600,8 +526,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>FE</td>
 		<td>SIAL</td>
 		<td>GS</td>
-	</tr>
-	<tr>
 		<td>ERTS</td>
 		<td>SAF</td>
 		<td>PFG</td>
@@ -616,8 +540,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>CRM</td>
 		<td>EA</td>
 		<td>KMX</td>
-	</tr>
-	<tr>
 		<td>NEE</td>
 		<td>STJ</td>
 		<td>GNW</td>
@@ -632,8 +554,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>MPC</td>
 		<td>PLD</td>
 		<td>HAS</td>
-	</tr>
-	<tr>
 		<td>BAC</td>
 		<td>CCMO</td>
 		<td>UTX</td>
@@ -648,8 +568,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>WIN</td>
 		<td>WDC</td>
 		<td>SEE</td>
-	</tr>
-	<tr>
 		<td>UNM</td>
 		<td>CAM</td>
 		<td>PPG</td>
@@ -664,8 +582,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>AEP</td>
 		<td>PGN</td>
 		<td>PHM</td>
-	</tr>
-	<tr>
 		<td>YHOO</td>
 		<td>BUD</td>
 		<td>CPB</td>
@@ -680,8 +596,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>MWW</td>
 		<td>GE</td>
 		<td>ADM</td>
-	</tr>
-	<tr>
 		<td>CL</td>
 		<td>AIV</td>
 		<td>CELG</td>
@@ -696,8 +610,6 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>PGR</td>
 		<td>DOV</td>
 		<td>MAT</td>
-	</tr>
-	<tr>
 		<td>MRK</td>
 		<td>GT</td>
 		<td>ORCL</td>
@@ -709,6 +621,12 @@ In this research the details of 442 stocks was utilized and the symbols of these
 		<td>AES</td>
 		<td>JNY</td>
 		<td>BBT</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
