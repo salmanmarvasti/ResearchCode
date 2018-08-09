@@ -1,4 +1,5 @@
 # Reasearch Code
+In this research the details of 442 stocks was utilized which are listed in the table below.
  <table>
 	<tr>
 		<td>ADSK</td>
