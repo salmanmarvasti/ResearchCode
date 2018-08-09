@@ -70,10 +70,10 @@ def normalizeDataDynamic(data, window, full_prices_1d):
             if open == full_prices_1d.open[j] and close == full_prices_1d.close[j] and low == full_prices_1d.low[j] and high == full_prices_1d.high[j]:
                 dataIndex = j
                 break
-        if dataIndex >= 14:
+        if dataIndex >= VARIABLES.DAYS_CHECKED:
             mdatas.append(mdata)
-            lows = full_prices_1d.low[dataIndex-13:dataIndex+1]
-            highs = full_prices_1d.high[dataIndex-13:dataIndex+1]
+            lows = full_prices_1d.low[dataIndex+1-VARIABLES.DAYS_CHECKED:dataIndex+1]
+            highs = full_prices_1d.high[dataIndex+1-VARIABLES.DAYS_CHECKED:dataIndex+1]
             lowest = min(lows)
             highest = max(highs)
             scale = highest - lowest

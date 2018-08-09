@@ -19,11 +19,15 @@ import warnings
 # functions
 
 
-def writeTensorFlow(data=None, direction=None, dimenssion=None, nameIndexArray=None, name=None):
+def writeTensorFlow(data=None, direction=None, dimenssion=None, nameIndexArray=None, name=None, RSIs=None):
     data = np.ndarray.tolist(data)
-    with open(name + str(dimenssion) + '.csv', 'w') as f:
+    RSICounter = 0
+    with open(VARIABLES.TENSOR_FLOW_DATA_PATH + str(dimenssion) + '/' + name + str(dimenssion) + '.csv', 'w') as f:
         writer = csv.writer(f)
-        writer.writerow([str(len(data)), str(dimenssion), 'up', 'down', 'steady'])
+        if dimenssion == 4:
+            writer.writerow([str(len(data)), str(dimenssion), 'up', 'down', 'steady'])
+        elif dimenssion == 12:
+            writer.writerow([str(len(data)), str(dimenssion+1), 'up', 'down', 'steady'])
         for k in range(len(data)):
             if direction[k] == 'up':
                 dir = 0
@@ -31,13 +35,18 @@ def writeTensorFlow(data=None, direction=None, dimenssion=None, nameIndexArray=N
                 dir = 1
             elif direction[k] == 'steady':
                 dir = 2
-            tempArr = data[k] + [dir]
+            if dimenssion == 4:
+                tempArr = data[k] + [dir]
+            elif dimenssion == 12:
+                RSI = RSIs[RSICounter]
+                RSICounter += 1
+                tempArr = data[k] + [RSI] + [dir]
             writer.writerow(tempArr)
-    if nameIndexArray:
-        with open(name + 'Map' + str(dimenssion) + '.csv', 'w') as f:
-            writer = csv.writer(f)
-            for k in range(len(nameIndexArray)):
-                writer.writerow(nameIndexArray[k])
+    # if nameIndexArray:
+    #     with open(name + 'Map' + str(dimenssion) + '.csv', 'w') as f:
+    #         writer = csv.writer(f)
+    #         for k in range(len(nameIndexArray)):
+    #             writer.writerow(nameIndexArray[k])
 
 
 def jumpedAppropriately(array, meanThreshhold, end):
@@ -88,7 +97,7 @@ def calcReturnizedMeanMultiplier(price):
     elif chooseReturnized == 'org':
         VARIABLES.STRAIGHT_LINE_TOLERANCE = max(0.04, VARIABLES.STRAIGHT_LINE_TOLERANCE_ORIGINAL * deviation)
     VARIABLES.RETURNIZED_MEAN_MULTIPLIER = abs(
-        VARIABLES.MEAN_THRESHHOLD - VARIABLES.MEAN_THRESHHOLD * log10(VARIABLES.AAPL_DEVIATION / deviation))
+        VARIABLES.MEAN_THRESHHOLD * (1 - log10(VARIABLES.AAPL_DEVIATION / deviation)))
     print VARIABLES.RETURNIZED_MEAN_MULTIPLIER
 
 
@@ -212,14 +221,6 @@ while True:
 
 wholeData = []
 wholeData12D = []
-d_open = []
-closes = []
-highs = []
-lows = []
-opens = []
-RSISMAs = []
-RSIEWMAs = []
-times = []
 wholeDotOrientationGroup = []
 wholeDotOrientationGroup12D = []
 nameIndexArray = []
@@ -228,6 +229,13 @@ print "you chose " + number + " and the exactName is : " + str(exactName)
 print 'number of stocks: ' + str(len(exactName))
 warnings.simplefilter("error", RuntimeWarning)
 for name in exactName:
+    closes = []
+    highs = []
+    lows = []
+    opens = []
+    RSISMAs = []
+    RSIEWMAs = []
+    times = []
     print name
     print compCounter
     compCounter += 1
@@ -282,16 +290,17 @@ for name in exactName:
     # returnized_prices_1d = np.squeeze(np.asarray(returnized_prices_2d))
     # print "returnized_prices_1d is: " + str(returnized_prices_1d)
     if chooseReturnized == "ret":
-        specificData, dotOrientationGroup, specificData12D, dotOrientationGroup12D = LeastSquare.gentrends(window, returnized_2d, returnized_1d, name, times,
+        specificData, dotOrientationGroup, specificData12D, dotOrientationGroup12D, RSIs = LeastSquare.gentrends(window, returnized_2d, returnized_1d, name, times,
                                                                   True)
     elif chooseReturnized == "org":
-        specificData, dotOrientationGroup, specificData12D, dotOrientationGroup12D = LeastSquare.gentrends(window, full_prices_2d, full_prices_1d, name, times,
+        specificData, dotOrientationGroup, specificData12D, dotOrientationGroup12D, RSIs = LeastSquare.gentrends(window, full_prices_2d, full_prices_1d, name, times,
                                                                   True)
     else:
         break
     # wholeDotOrientationGroup.append(dotOrientationGroup)
     wholeDotOrientationGroup = wholeDotOrientationGroup + dotOrientationGroup
     wholeDotOrientationGroup12D = wholeDotOrientationGroup12D + dotOrientationGroup12D
+    # open close low high
     if specificData.any():
         if len(wholeData) != 0:
             # wholeData = wholeData + specificData
@@ -303,20 +312,21 @@ for name in exactName:
             # np.concatenate((wholeData, specificData), axis=0)
         if dimenssion == '12':
             writeTensorFlow(data=specificData12D, direction=dotOrientationGroup12D, dimenssion=12,
-                            name=name)
+                            name=name, RSIs=RSIs)
         else:
             writeTensorFlow(data=specificData, direction=dotOrientationGroup, dimenssion=4,
-                            name=name)
+                            name=name, RSIs=RSIs)
 # plt.show()
-# print wholeData
-# if dimenssion == '12':
-#     wholeData = wholeData12D
-#     wholeDotOrientationGroup = wholeDotOrientationGroup12D
-# if chooseCluster == 'kmeans':
-#     clusterMethods.clusterKMeans(wholeData, 2, wholeDotOrientationGroup)
-# elif chooseCluster == 'gmm':
-#     clusterMethods.gaussianModelClustering(wholeData, wholeDotOrientationGroup, TestInfos.stockNameArray,
-#                                            TestInfos.stockLines)
+print wholeData
+if dimenssion == '12':
+    wholeData = wholeData12D
+    wholeDotOrientationGroup = wholeDotOrientationGroup12D
+if chooseCluster == 'kmeans':
+    clusterMethods.clusterKMeans(wholeData, 2, wholeDotOrientationGroup)
+elif chooseCluster == 'gmm':
+    clusterMethods.gaussianModelClustering(wholeData, wholeDotOrientationGroup, TestInfos.stockNameArray,
+                                           TestInfos.stockLines)
+
 # if dimenssion == '12':
 #     writeTensorFlow(data=wholeData12D, direction=wholeDotOrientationGroup12D, dimenssion=12,
 #                     nameIndexArray=nameIndexArray)

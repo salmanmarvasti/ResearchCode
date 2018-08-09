@@ -12,32 +12,81 @@ CLOSE_HOURS = 16
 DATA_ACCESS_CLASS = 'Yahoo'
 DATA_ACCESS_PATH = '/home/sepehr/QSTK-0.2.8/QSTK/QSData'
 
+
 #Main method
 BACK_UP = []
 
-EXACT_CHOSEN_STOCK = ['ADSK', 'WFC', 'NSC', 'WY', 'MHS', 'BLL', 'AFL', 'HES', 'SNDK', 'COL', 'UST', 'ED', 'TER', 'DGX', 'QLGC', 'FTI', 'WWY', 'FAST', 'MYL', 'SCHW', 'SBUX', 'SPLS', 'BEAM', 'JCP', 'AKAM', 'WFT', 'VAR', 'HPQ', 'PFE', 'XRAY', 'CSC', 'FLIR', 'TEX', 'FMCC', 'FITB', 'SHW',
-          'LUK', 'WHR', 'HUM', 'RSH', 'HNZ', 'HON', 'CSCO', 'MBI', 'KEY', 'TIE', 'BC', 'PNC', 'HOG', 'BCR', 'NCC', 'AMGN', 'JDSU', 'STI', 'NOVL', 'RRC', 'LYB', 'EXPE', 'TWX', 'CTXS', 'FNMA', 'BBBY', 'WMT', 'AMT', 'HRB', 'LH', 'LLY', 'EFX', 'AMP', 'GOOG', 'MAS', 'GD', 'CLX', 'ADBE', 'TYC', 'NOV', 'BWA', 'TIF', 'SII', 'GLW', 'SJM',
-          'UIS', 'S', 'ROK', 'RTN', 'JWN', 'HBAN', 'KR', 'WYE', 'PCP', 'ORLY', 'MTG', 'VLO', 'MUR', 'WAMUQ', 'CF', 'MU', 'ITT', 'POM', 'ITW', 'ARG', 'TGT', 'IRM', 'FII', 'L', 'ANF', 'MET', 'APH', 'XRX', 'CAT', 'C', 'FTR', 'LMT', 'EXC', 'EBAY', 'LIFE', 'ABI', 'RDC', 'AMD', 'ROST', 'EQT', 'COP', 'GCI', 'PX',
-          'CAH', 'EQR', 'KBH', 'DVN', 'XTO', 'CTAS', 'DHR', 'RSG', 'EXPD', 'CTSH', 'CMS', 'FDO', 'WFR', 'CI', 'NRG',
-          'VFC', 'PXD', 'NYX', 'APOL', 'ZMH', 'PBG', 'SLE', 'FLS', 'VZ', 'LM', 'EQ', 'PTV', 'HAL', 'CVX', 'WAG', 'LUV',
-          'LRCX', 'GILD', 'USB', 'DISCA', 'AET', 'CBE', 'DE', 'RIG', 'OMC', 'MCO', 'FFIV', 'MCHP', 'MI', 'CB', 'EK',
-          'AGN', 'XLNX', 'KO', 'JNJ', 'MCD', 'RRD', 'CVH', 'GPC', 'CMI', 'BDK', 'ASH', 'PCL', 'ODP', 'PKI', 'HST', 'KMI', 'TMO', 'CBG', 'DIS', 'ZION', 'HP', 'DRI', 'LEN', 'DLTR', 'WU', 'ACAS', 'ISRG', 'SDS', 'K', 'PRU', 'MDP', 'NBR', 'JOY', 'GIS', 'ALL', 'GGP', 'RAI', 'JAVA', 'SYMC', 'WPO', 'KMB', 'CHK', 'HIG', 'AAPL', 'SYK', 'CBS', 'HSP', 'HPCCP', 'BSX', 'NDAQ', 'KLAC', 'CINF', 'COV', 'STZ', 'OMX', 'RHI', 'TXN', 'SLM', 'WYN', 'CVS', 'MMC', 'PDCO', 'PLL', 'WB', 'DNB', 'HSY', 'COH', 'JNS',
+
+#invalid data
+ARRAY_OF_INVALID_STOCKS = ['TYC', 'SII', 'WYE', 'PCP', 'WAMUQ', 'POM', 'XTO', 'WFR', 'NYX', 'APOL', 'ZMH', 'PBG', 'SLE', 'EQ', 'PTV', 'CBE', 'MI', 'EK', 'BDK', 'JOY', 'RAI', 'JAVA', 'WPO', 'HSP', 'HPCCP', 'COV', 'OMX', 'PLL', 'COH', 'JNS', 'SAI', 'LLTC', 'TLAB', 'DD', 'GENZ', 'IACI', 'WPI', 'LXK', 'CFC+A', 'BRCM', 'HAR', '$VIX', 'ROH', 'MOLX', 'TWC', 'BMC', 'WFM', 'WLP', 'PCS', 'TEG', 'BHI', 'NU', 'TE', 'DV', 'MHP', 'CEG', 'ACE', 'DOW', '$DJI', 'HOT', 'LIZ', 'EP', 'AYE', 'MJN', 'MWV', 'CFN', 'SGP', 'BJS', 'LEHMQ', 'FRX', 'LTD', 'TSO', 'SWY', 'GAS', 'ANR', 'SIAL', 'ERTS', 'SAF', 'STJ', '$SPX', 'GR', 'CCMO', 'CAM', 'ACS', 'ABKFQ', 'PGN', 'YHOO', 'CVC', 'MWW', 'JNY']
+
+ALL_OK_STOCKS = ['ADSK', 'WFC', 'NSC', 'WY', 'BLL', 'AFL', 'HES', 'COL', 'UST', 'ED', 'TER', 'DGX', 'FTI', 'FAST', 'MYL', 'SCHW', 'SBUX', 'JCP', 'AKAM', 'WFT', 'VAR', 'HPQ', 'PFE', 'XRAY', 'TEX', 'FMCC', 'FITB', 'SHW',
+          'WHR', 'HUM', 'HON', 'CSCO', 'MBI', 'BC', 'PNC', 'HOG', 'AMGN', 'STI', 'RRC', 'LYB', 'EXPE', 'CTXS', 'FNMA', 'BBBY',
+          'WMT', 'AMT', 'HRB', 'LH', 'LLY', 'EFX', 'AMP', 'GOOG', 'MAS', 'GD', 'CLX', 'ADBE', 'TYC', 'NOV', 'BWA',
+          'TIF', 'SII', 'SJM',
+          'UIS', 'S', 'ROK', 'RTN', 'JWN', 'HBAN', 'KR', 'WYE', 'PCP', 'ORLY', 'MTG', 'VLO', 'MUR', 'WAMUQ', 'CF', 'MU', 'POM', 'ITW', 'TGT', 'IRM', 'FII', 'L', 'ANF', 'MET', 'APH', 'XRX', 'CAT', 'C', 'FTR', 'LMT', 'EXC', 'EBAY', 'LIFE', 'ABI', 'AMD', 'ROST', 'EQT', 'GCI', 'PX',
+          'CAH', 'EQR', 'KBH', 'DVN', 'XTO', 'CTAS', 'DHR', 'RSG', 'EXPD', 'CTSH', 'CMS', 'WFR', 'CI', 'NRG',
+          'VFC', 'PXD', 'NYX', 'APOL', 'ZMH', 'PBG', 'SLE', 'FLS', 'VZ', 'LM', 'EQ', 'PTV', 'HAL', 'CVX', 'LUV',
+          'LRCX', 'GILD', 'DISCA', 'AET', 'CBE', 'DE', 'RIG', 'OMC', 'MCO', 'FFIV', 'MCHP', 'MI', 'CB', 'EK',
+          'AGN', 'XLNX', 'KO', 'JNJ', 'MCD', 'RRD', 'GPC', 'CMI', 'BDK', 'ASH', 'ODP', 'PKI', 'HST', 'KMI', 'TMO', 'CBG', 'DIS', 'ZION', 'HP', 'DRI', 'LEN', 'DLTR', 'WU', 'ISRG', 'SDS', 'K', 'PRU', 'MDP', 'NBR', 'JOY', 'GIS', 'ALL', 'GGP', 'RAI', 'JAVA', 'SYMC', 'WPO', 'KMB', 'CHK', 'HIG', 'AAPL', 'SYK', 'CBS', 'HSP', 'HPCCP', 'BSX', 'NDAQ', 'KLAC', 'CINF', 'COV', 'STZ', 'OMX', 'RHI', 'TXN', 'SLM', 'WYN', 'CVS', 'MMC', 'PDCO', 'PLL', 'WB', 'DNB', 'HSY', 'COH', 'JNS',
           'SAI', 'UNH', 'LLTC', 'TLAB', 'PAYX', 'OKE', 'CLF', 'CMG', 'A', 'DD', 'FISV', 'XOM', 'GENZ', 'MKC', 'SWN',
           'JEC', 'EMN', 'VRSN', 'EIX', 'LEG', 'PWR', 'COG', 'NTAP', 'JBL', 'IACI', 'WPI', 'SE', 'SH', 'BEN', 'LXK',
           'NBL', 'LOW', 'ESV', 'Q', 'SO', 'TROW', 'CFC+A', 'SHLD', 'BRCM', 'BDX', 'NWSA', 'HAR',
-          'PCAR', 'NWL', 'CNP', 'KSS', 'FMC', 'WEC', 'AMAT', 'KG', 'XL', 'RL',
-          '$VIX', 'BIG', 'ROH', 'NYT', 'ETN', 'WMB', 'DDS', 'CERN', 'ALTR', 'SNV', 'PEP', 'V', 'MOLX', 'AA', 'NUE',
+          'PCAR', 'NWL', 'CNP', 'KSS', 'FMC', 'WEC', 'AMAT', 'XL', 'RL',
+          '$VIX', 'BIG', 'ROH', 'NYT', 'ETN', 'WMB', 'DDS', 'CERN', 'SNV', 'PEP', 'V', 'MOLX', 'AA', 'NUE',
           'AVP', 'BBY', 'BLK', 'IFF', 'ROP', 'CVG', 'AON', 'EMR', 'HCN', 'TWC', 'PNW', 'IVZ', 'HCP', 'TEL', 'SCG',
-          'CMCSA', 'BAX', 'F', 'MAR', 'BMC', 'CCI', 'ACN', 'STT', 'XEL', 'WFM', 'CAG', 'LNC', 'WLP', 'NKE', 'CMA',
-          'KFT', 'PCS', 'TEG', 'ICE', 'BHI', 'NU', 'DYN', 'IGT', 'R', 'CIEN', 'CCE', 'PPL', 'AVY', 'DDR', 'PEG', 'GPS', 'FOSL', 'PH', 'NTRS', 'LLL', 'CA', 'MSI', 'STX', 'VMC', 'SLB', 'CSX', 'THC', 'WAT', 'WPX', 'DUK', 'IP', 'HCBK', 'EL', 'DF', 'XYL', 'CCL', 'MMM', 'AMZN', 'JCI', 'MDT', 'VIA.B', 'TE', 'KIM', 'DPS', 'TRIP', 'HRL', 'NSM', 'NFLX', 'MTW', 'ADI', 'DV', 'MHP', 'CEG', 'UPS', 'MON', 'SVU', 'TAP', 'COF', 'TJX', 'BTU', 'ABT', 'ACE', 'PBI', 'AIG', 'AEE', 'DOW', 'OI', 'APA', 'OXY', 'FCX', 'AXP', 'PSA', 'IBM', '$DJI', 'PSX', 'BSC', 'DO', 'ECL', 'HOT', 'M', 'IYR', 'ESRX', 'VTR', 'LIZ', 'MO', 'SNA', 'EP', 'URBN', 'PRGO', 'CNX', 'DVA', 'GME', 'YUM', 'APC', 'APD', 'GM', 'MSFT',
+          'CMCSA', 'F', 'MAR', 'BMC', 'CCI', 'ACN', 'STT', 'XEL', 'WFM', 'CAG', 'LNC', 'WLP', 'NKE', 'CMA',
+          'PCS', 'TEG', 'ICE', 'BHI', 'NU', 'DYN', 'IGT', 'R', 'CIEN', 'CCE', 'PPL', 'AVY', 'DDR', 'PEG', 'GPS', 'FOSL', 'PH', 'NTRS', 'LLL', 'CA', 'MSI', 'STX', 'VMC', 'SLB', 'CSX', 'THC', 'WAT', 'WPX', 'DUK', 'IP', 'EL', 'DF', 'XYL', 'CCL', 'MMM', 'AMZN', 'JCI', 'MDT', 'TE', 'KIM', 'DPS', 'TRIP', 'HRL', 'NSM', 'NFLX', 'MTW', 'ADI', 'DV', 'MHP', 'CEG', 'UPS', 'MON', 'SVU', 'TAP', 'COF', 'TJX', 'BTU', 'PBI', 'AIG', 'AEE', 'DOW', 'OI', 'APA', 'OXY', 'FCX', 'AXP', 'PSA', 'IBM', '$DJI', 'PSX', 'DO', 'ECL', 'HOT', 'M', 'IYR', 'ESRX', 'VTR', 'LIZ', 'MO', 'SNA', 'EP', 'DVA', 'GME', 'YUM', 'APC', 'APD', 'GM', 'MSFT',
           'PCG', 'DTE', 'ATI', 'COST', 'CIT', 'GLD', 'NFX', 'ADP', 'RF', 'CPWR', 'BA', 'PM', 'T', 'INTC', 'EOG', 'CME',
-          'MTB', 'MNST', 'SUN', 'AN', 'VIAB', 'AYE', 'MJN', 'MWV', 'NVLS', 'NVDA', 'ETFC', 'QCOM', 'ETR', 'LSI', 'BMS',
+          'MTB', 'MNST', 'AN', 'VIAB', 'AYE', 'MJN', 'MWV', 'NVDA', 'ETFC', 'QCOM', 'ETR', 'LSI', 'BMS',
           'AIZ', 'X', 'SPY', 'D', 'CFN', 'SGP', 'BJS', 'NI', 'DNR', 'LEHMQ', 'ALXN', 'IPG', 'TRV', 'NE', 'AVB', 'HRS',
-          'FRX', 'EW', 'BMY', 'IR', 'CTX', 'LTD', 'TSO', 'SRCL', 'MCK', 'SWY', 'PCLN', 'MOS', 'PBCT', 'MRO', 'GAS',
+          'FRX', 'EW', 'BMY', 'IR', 'LTD', 'TSO', 'SRCL', 'MCK', 'SWY', 'PCLN', 'MOS', 'PBCT', 'MRO', 'GAS',
           'ANR', 'NOC', 'BIIB', 'NEM', 'FLR', 'SRE', 'CTL', 'FE', 'SIAL', 'GS', 'ERTS', 'SAF', 'PFG', 'WM', 'TXT',
-          'SYY', 'DHI', 'CBSH', 'FSLR', 'CRM', 'EA', 'KMX', 'NEE', 'STJ', 'GNW', 'FDX', 'RHT', '$SPX', 'DFS', 'GR', 'TMK', 'MPC', 'PLD', 'HAS', 'BAC', 'CCMO', 'UTX', 'TSN', 'TSS', 'VNO', 'CHRW', 'PG', 'SWK', 'WIN', 'WDC', 'SEE', 'UNM', 'CAM', 'PPG', 'UNP', 'MS', 'JNPR', 'WEN', 'ACS', 'ABKFQ', 'WYNN', 'AEP', 'PGN', 'PHM', 'YHOO', 'BUD', 'CPB', 'GWW', 'FIS', 'CVC', 'BRK.B',
+          'SYY', 'DHI', 'CBSH', 'FSLR', 'CRM', 'EA', 'KMX', 'NEE', 'STJ', 'GNW', 'FDX', 'RHT', '$SPX', 'DFS', 'GR', 'TMK', 'MPC', 'PLD', 'HAS', 'BAC', 'CCMO', 'UTX', 'TSN', 'TSS', 'VNO', 'CHRW', 'PG', 'SWK', 'WIN', 'WDC', 'SEE', 'UNM', 'CAM', 'PPG', 'UNP', 'MS', 'JNPR', 'ACS', 'ABKFQ', 'WYNN', 'AEP', 'PGN', 'PHM', 'YHOO', 'BUD', 'CPB', 'GWW', 'FIS', 'CVC',
           'TDC', 'INTU', 'BK', 'MWW', 'GE', 'ADM', 'CL', 'AIV', 'CELG', 'ABC', 'BXP', 'QEP', 'SSP', 'AZO', 'MA', 'PGR',
           'DOV', 'MAT', 'MRK', 'GT', 'ORCL', 'JPM', 'HD', 'FHN', 'AES', 'JNY', 'BBT']
+
+SCANED = []
+
+EXACT_CHOSEN_STOCK_COMPLETE = ['ADSK', 'WFC', 'NSC', 'WY', 'BLL', 'AFL', 'HES', 'COL', 'UST', 'ED', 'TER', 'DGX', 'FTI', 'FAST', 'MYL', 'SCHW', 'SBUX', 'JCP', 'AKAM', 'WFT', 'VAR', 'HPQ', 'PFE', 'XRAY', 'TEX', 'FMCC', 'FITB', 'SHW',
+          'WHR', 'HUM', 'HON', 'CSCO', 'MBI', 'BC', 'PNC', 'HOG', 'AMGN', 'STI', 'RRC', 'LYB', 'EXPE', 'CTXS', 'FNMA', 'BBBY',
+          'WMT', 'AMT', 'HRB', 'LH', 'LLY', 'EFX', 'AMP', 'GOOG', 'MAS', 'GD', 'CLX', 'ADBE', 'TYC', 'NOV', 'BWA',
+          'SII', 'SJM',
+          'UIS', 'S', 'ROK', 'RTN', 'JWN', 'HBAN', 'KR', 'WYE', 'PCP', 'ORLY', 'MTG', 'VLO', 'MUR', 'WAMUQ', 'CF',
+          'POM', 'ITW', 'TGT', 'IRM', 'FII', 'L', 'ANF', 'MET', 'APH', 'XRX', 'CAT', 'C', 'FTR', 'LMT', 'EXC', 'EBAY',
+          'LIFE', 'AMD', 'ROST', 'EQT', 'GCI', 'PX',
+          'CAH', 'EQR', 'KBH', 'DVN', 'XTO', 'CTAS', 'DHR', 'RSG', 'EXPD', 'CTSH', 'CMS', 'WFR', 'CI', 'NRG',
+          'VFC', 'PXD', 'NYX', 'APOL', 'ZMH', 'PBG', 'SLE', 'FLS', 'VZ', 'LM', 'EQ', 'PTV', 'HAL', 'CVX', 'LUV',
+          'LRCX', 'DISCA', 'AET', 'CBE', 'DE', 'RIG', 'OMC', 'MCO', 'FFIV', 'MCHP', 'MI', 'CB', 'EK',
+          'AGN', 'XLNX', 'KO', 'JNJ', 'MCD', 'RRD', 'GPC', 'CMI', 'BDK', 'ASH', 'ODP', 'PKI', 'HST', 'KMI', 'TMO', 'CBG', 'DIS', 'ZION', 'HP', 'DRI', 'LEN', 'DLTR', 'WU', 'ISRG', 'SDS', 'K', 'PRU', 'MDP', 'NBR', 'JOY', 'GIS', 'ALL', 'GGP', 'RAI', 'JAVA', 'SYMC', 'WPO', 'KMB', 'CHK', 'HIG', 'AAPL', 'SYK', 'CBS',
+          'HSP', 'HPCCP', 'BSX', 'NDAQ', 'KLAC', 'CINF', 'COV', 'STZ', 'OMX', 'RHI', 'TXN',
+          'CVS', 'MMC', 'PDCO', 'PLL', 'WB', 'DNB', 'HSY', 'COH', 'JNS',
+          'SAI', 'UNH', 'LLTC', 'TLAB', 'PAYX', 'OKE', 'CLF', 'CMG', 'A', 'DD', 'FISV', 'XOM', 'GENZ', 'MKC', 'SWN',
+          'JEC', 'EMN', 'VRSN', 'EIX', 'LEG', 'PWR', 'COG', 'NTAP', 'JBL', 'IACI', 'WPI', 'BEN', 'LXK',
+          'NBL', 'LOW', 'ESV', 'Q', 'SO', 'TROW', 'CFC+A', 'SHLD', 'BRCM', 'BDX', 'NWSA', 'HAR',
+          'PCAR', 'NWL', 'CNP', 'KSS', 'FMC', 'WEC', 'AMAT', 'XL', 'RL',
+          '$VIX', 'BIG', 'ROH', 'NYT', 'ETN', 'WMB', 'DDS', 'CERN', 'SNV', 'PEP', 'V', 'MOLX', 'AA', 'NUE',
+          'AVP', 'BBY', 'BLK', 'IFF', 'ROP', 'CVG', 'AON', 'EMR', 'HCN', 'TWC', 'PNW', 'IVZ', 'HCP', 'TEL', 'SCG',
+          'CMCSA', 'F', 'MAR', 'BMC', 'CCI', 'ACN', 'STT', 'XEL', 'WFM', 'CAG', 'LNC', 'WLP', 'NKE', 'CMA',
+          'PCS', 'TEG', 'ICE', 'BHI', 'NU', 'DYN', 'IGT', 'R', 'CIEN',
+          'CCE', 'PPL', 'AVY', 'DDR', 'PEG', 'GPS', 'FOSL', 'PH', 'NTRS', 'LLL', 'CA', 'MSI', 'STX', 'VMC', 'SLB',
+          'CSX', 'THC', 'WAT', 'WPX', 'DUK', 'IP', 'EL', 'DF', 'XYL', 'CCL', 'MMM', 'AMZN', 'JCI', 'MDT', 'TE', 'KIM',
+          'DPS', 'TRIP', 'HRL', 'NSM', 'NFLX', 'MTW', 'ADI', 'DV', 'MHP', 'CEG', 'UPS', 'MON', 'SVU', 'TAP', 'COF',
+          'TJX', 'PBI', 'AIG', 'AEE', 'DOW', 'OI', 'APA', 'OXY', 'FCX', 'AXP', 'PSA', 'IBM', '$DJI', 'PSX', 'DO', 'ECL', 'HOT', 'M', 'IYR', 'ESRX', 'VTR', 'LIZ', 'MO', 'SNA', 'EP', 'DVA', 'GME', 'YUM', 'APC', 'APD', 'GM', 'MSFT',
+          'PCG', 'DTE', 'ATI', 'COST', 'CIT', 'GLD', 'NFX', 'ADP', 'RF',
+          'BA', 'PM', 'T', 'INTC', 'EOG', 'CME',
+          'MTB', 'MNST', 'AN', 'VIAB', 'AYE', 'MJN', 'MWV', 'NVDA', 'ETFC', 'QCOM', 'ETR', 'LSI', 'BMS',
+          'AIZ', 'X', 'SPY', 'D', 'CFN', 'SGP', 'BJS', 'NI', 'DNR', 'LEHMQ', 'ALXN', 'IPG', 'TRV', 'NE', 'AVB', 'HRS',
+          'FRX', 'EW', 'BMY', 'IR', 'LTD', 'TSO', 'SRCL', 'MCK', 'SWY', 'PCLN', 'MOS', 'PBCT', 'MRO', 'GAS',
+          'ANR', 'NOC', 'BIIB', 'NEM', 'FLR', 'SRE', 'CTL', 'FE', 'SIAL', 'GS', 'ERTS', 'SAF', 'PFG', 'WM', 'TXT',
+          'SYY', 'DHI', 'CBSH', 'FSLR', 'CRM', 'EA', 'KMX', 'NEE', 'STJ', 'GNW', 'FDX', 'RHT', '$SPX', 'DFS', 'GR',
+          'TMK', 'MPC', 'PLD', 'HAS', 'BAC', 'CCMO', 'UTX', 'TSN', 'TSS', 'VNO', 'CHRW', 'PG', 'SWK', 'WIN', 'WDC',
+          'SEE', 'UNM', 'CAM', 'PPG', 'UNP', 'MS', 'JNPR', 'ACS', 'ABKFQ', 'WYNN', 'AEP', 'PGN', 'PHM', 'YHOO', 'BUD',
+          'CPB', 'GWW', 'FIS', 'CVC',
+          'TDC', 'INTU', 'BK', 'MWW', 'GE', 'ADM', 'CL', 'AIV', 'CELG', 'ABC', 'BXP', 'QEP', 'SSP', 'AZO', 'MA', 'PGR',
+          'DOV', 'MAT', 'MRK', 'GT', 'ORCL', 'JPM', 'HD', 'FHN', 'AES', 'JNY', 'BBT'
+          ]
+EXACT_CHOSEN_STOCK = [x for x in EXACT_CHOSEN_STOCK_COMPLETE if x not in ARRAY_OF_INVALID_STOCKS]
 EXACT_STOCK = EXACT_CHOSEN_STOCK
 RETURNIZED_MEAN_MULTIPLIER = 0
 START_OF_PICKER = 0
@@ -45,6 +94,9 @@ NUMBER_OF_STOCKS_PICKED = 30
 AAPL_DEVIATION = 0.57
 MEAN_THRESHHOLD = 4
 WINDOW_OVERLAP = 5
+
+SHOW_PLOT = False
+TENSOR_FLOW_DATA_PATH = './tensorflow data'
 
 #Line
 STRAIGHT_LINE_TOLERANCE = None
@@ -60,9 +112,6 @@ CIRCLE_RADIUS_AROUND_CENTROIDS = 0.05
 ADDRESS_TO_FILES = '/home/sepehr/QSTK-0.2.8/QSTK/QSData/Yahoo/'
 ADDRESS_TO_UPDATED_FILES = '/home/sepehr/Documents/Marvasti Project/refactored code/updated files'
 ADDRESS_TO_SHELL_SCRIPT = '/home/sepehr/Documents/Marvasti\ Project/refactored\ code/updater\ script/get-yahoo-quotes.sh'
-
-#invalid data
-ARRAY_OF_INVALID_STOCKS = ['ARG', 'COP', 'FDO', 'WAG', 'CVH', 'PCL', 'ACAS', 'AAPL', 'KG', 'ALTR', 'BAX', 'KFT', 'HCBK', 'VIA.B', 'BSC', 'URBN', 'PRGO', 'CNX', 'SUN', 'NVLS', 'CTX', 'WEN', 'BRK.B', 'ARG', 'COP', 'FDO', 'WAG', 'CVH', 'PCL', 'ACAS', 'AAPL', 'KG', 'ALTR', 'BAX', 'KFT', 'HCBK', 'VIA.B', 'BSC', 'URBN', 'PRGO', 'CNX', 'SUN', 'NVLS', 'CTX', 'WEN', 'BRK.B', 'MHS', 'QLGC', 'WWY', 'SPLS', 'CSC', 'RSH', 'HNZ', 'TIE', 'BCR', 'NCC', 'JDSU', 'NOVL', 'TYC', 'SII', 'WYE', 'PCP', 'WAMUQ', 'POM', 'XTO', 'WFR', 'NYX', 'APOL', 'ZMH', 'PBG', 'SLE', 'EQ', 'PTV', 'CBE', 'MI', 'EK', 'BDK', 'JOY', 'RAI', 'JAVA', 'WPO', 'HSP', 'HPCCP', 'COV', 'OMX', 'PLL', 'COH', 'JNS', 'SAI', 'LLTC', 'TLAB', 'DD', 'GENZ', 'IACI', 'WPI', 'LXK', 'CFC+A', 'BRCM', 'HAR', '$VIX', 'ROH', 'MOLX', 'TWC', 'BMC', 'WFM', 'WLP', 'PCS', 'TEG', 'BHI', 'NU', 'TE', 'DV', 'MHP', 'CEG', 'ACE', 'DOW', '$DJI', 'HOT', 'LIZ', 'EP', 'AYE', 'MJN', 'MWV', 'CFN', 'SGP', 'BJS', 'LEHMQ', 'FRX', 'LTD', 'TSO', 'SWY', 'GAS', 'ANR', 'SIAL', 'ERTS', 'SAF', 'STJ', '$SPX', 'GR', 'CCMO', 'CAM', 'ACS', 'ABKFQ', 'PGN', 'YHOO', 'CVC', 'MWW', 'JNY']
 
 #categories
 BasicIndustries = ['SHLM', 'ADES', 'AEGN', 'AMTX', 'AMRK', 'AMWD', 'AMRS', 'AQMS', 'RKDA', 'APWC', 'BCPC', 'CLXT', 'CVCO', 'CENX', 'CADC', 'CHNR', 'CDXS', 'CRWS', 'CSWI', 'CTIB', 'DELT', 'EVGN', 'GEVO', 'GLDD', 'GPP', 'GPRE', 'GURE', 'HCCI', 'HYGS', 'IOSP', 'FSTR', 'LAYN', 'LMB', 'MBII', 'MTRX', 'MERC', 'MRDN', 'MRDNW', 'MEOH', 'MPVD', 'MYRG', 'NEWA', 'NWPX', 'ZEUS', 'OPNT', 'OCC', 'OSN', 'PEIX', 'PAAS', 'PATK', 'PESI', 'PGLC', 'PLPC', 'PRIM', 'GOLD', 'RGSE', 'REGI', 'RGLD', 'SNES', 'SMED', 'SND', 'SSRM', 'STLD', 'SRCL', 'SRCLP', 'STRL', 'SYNL', 'SES', 'TANH', 'TORM          ', 'USLM', 'UFPI', 'USAP', 'WWR', 'VERU', 'WDFC', 'YTEN']
@@ -84,3 +133,6 @@ AllCategories = BasicIndustries + CapitalGoods + ConsumerDurables + ConsumerNonD
 
 #writer
 windowLength = 14
+
+#TestDataGenerator
+DAYS_CHECKED = 7
