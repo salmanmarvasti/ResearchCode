@@ -1,6 +1,6 @@
 # Reasearch Code
 In this research the details of 441 stocks was utilized and the symbols of these stocks are listed in the table below.
-This is the list of stocks that we used for our neural network
+This is the list of stocks that we used for our neural network. There are some pending updates that will help the community.
 <table>
 	<tr>
 		<td>ADSK</td>
